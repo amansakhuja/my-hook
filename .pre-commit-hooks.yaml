@@ -1,0 +1,8 @@
+---
+
+
+-   id: myhook
+    name: myhook
+    description: This hook runs checkov.
+    entry: myhook
+    language: python
