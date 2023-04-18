@@ -1,0 +1,24 @@
+#!/usr/bin/env python
+import re
+import sys
+import subprocess
+
+VOWELS_REGEX = r"[aeiouAEIOU]"
+
+
+def check_for_vowels(filenames):
+    """Checks for the presence of vowels in the given files."""
+    for filename in filenames:
+        with open(filename, "r") as f:
+            contents = f.read()
+            if re.search(VOWELS_REGEX, contents):
+                print(f"Error: {filename} contains vowels.")
+                sys.exit(1)
+
+
+if __name__ == "__main__":
+    # Get the filenames of the changed files
+    diff_command = ["git", "diff", "--cached", "--name-only"]
+    filenames = subprocess.check_output(diff_command, universal_newlines=True).splitlines()
+
+    check_for_vowels(filenames)
