@@ -13,7 +13,7 @@ setup(
     dependency_links=[], 
     license="Apache License 2.0",
     name="myhook",
-    version=version,
+    version=1.0.0,
     python_requires=">=3.7",
     description="Infrastructure as code static analysis",
     author="amansakhuja",
