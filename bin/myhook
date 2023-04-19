@@ -2,6 +2,7 @@
 import re
 import sys
 import subprocess
+import argparse
 
 VOWELS_REGEX = r"[aeiouAEIOU]"
 
@@ -18,7 +19,10 @@ def check_for_vowels(filenames):
 
 if __name__ == "__main__":
     # Get the filenames of the changed files
-    print("[ARGS]: ", sys.argv)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--api-token', type=str, help='API Token')
+    args = parser.parse_args()
+    print("[ARGS]: ", args)
     diff_command = ["git", "diff", "--cached", "--name-only"]
     filenames = subprocess.check_output(diff_command, universal_newlines=True).splitlines()
 
