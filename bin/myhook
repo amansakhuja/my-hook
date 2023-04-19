@@ -1,29 +1,11 @@
 #!/usr/bin/env python
-import re
+
 import sys
-import subprocess
-import argparse
 
-VOWELS_REGEX = r"[aeiouAEIOU]"
+def main(argv):
+    print('Received arguments:', argv)
 
-
-def check_for_vowels(filenames):
-    """Checks for the presence of vowels in the given files."""
-    for filename in filenames:
-        with open(filename, "r") as f:
-            contents = f.read()
-            if re.search(VOWELS_REGEX, contents):
-                print(f"Error: {filename} contains vowels.")
-                sys.exit(1)
-
-
-if __name__ == "__main__":
-    # Get the filenames of the changed files
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--api-token', type=str, help='API Token')
-    args = parser.parse_args()
-    print("[ARGS]: ", args)
-    diff_command = ["git", "diff", "--cached", "--name-only"]
-    filenames = subprocess.check_output(diff_command, universal_newlines=True).splitlines()
-
-    check_for_vowels(filenames)
+if __name__ == '__main__':
+    main(sys.argv[1:])
+    print("=============================================================================================")
+    sys.exit(1)
