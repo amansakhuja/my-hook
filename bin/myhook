@@ -24,6 +24,7 @@ if __name__ == "__main__":
         sys.exit(1)
     arg1 = sys.argv[0]
     arg2 = sys.argv[1]
+    print("[sys.argv]", sys.argv)
     if arg1 != "--api-token":
         print("Missing arg \"--api-token\"")
         sys.exit(1)
