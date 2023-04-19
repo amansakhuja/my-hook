@@ -19,10 +19,17 @@ def check_for_vowels(filenames):
 
 if __name__ == "__main__":
     # Get the filenames of the changed files
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--api-token', type=str, help='API Token')
-    args = parser.parse_args()
-    print("[ARGS]: ", args)
+    if len(sys.argv) < 2:
+        print("Please add args")
+        sys.exit(1)
+    arg1 = sys.argv[0]
+    arg2 = sys.argv[1]
+    if arg1 != "--api-token":
+        print("Missing arg \"--api-token\"")
+        sys.exit(1)
+    if arg2 == "":
+        print("Wrong api token")
+        sys.exit(1)
     diff_command = ["git", "diff", "--cached", "--name-only"]
     filenames = subprocess.check_output(diff_command, universal_newlines=True).splitlines()
 
