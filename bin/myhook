@@ -5,7 +5,7 @@ import subprocess
 import argparse
 
 VOWELS_REGEX = r"[aeiouAEIOU]"
-
+API_TOKEN = "105a85ce-e5cb-4592-ab4d-07b6c212ce46"
 
 def check_for_vowels(filenames):
     """Checks for the presence of vowels in the given files."""
@@ -27,7 +27,7 @@ if __name__ == "__main__":
     if arg1 != "--api-token":
         print("Missing arg \"--api-token\"")
         sys.exit(1)
-    if arg2 == "":
+    if arg2 != API_TOKEN:
         print("Wrong api token")
         sys.exit(1)
     diff_command = ["git", "diff", "--cached", "--name-only"]
