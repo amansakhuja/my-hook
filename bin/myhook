@@ -18,6 +18,7 @@ def check_for_vowels(filenames):
 
 if __name__ == "__main__":
     # Get the filenames of the changed files
+    print("[ARGS]: ", sys.argv)
     diff_command = ["git", "diff", "--cached", "--name-only"]
     filenames = subprocess.check_output(diff_command, universal_newlines=True).splitlines()
 
